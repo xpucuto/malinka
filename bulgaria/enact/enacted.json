@@ -1,0 +1,13 @@
+{
+  "bg": 142, 
+  "temp": "absolute", 
+  "snoozeBG": 188, 
+  "recieved": true, 
+  "rate": 0.8, 
+  "reason": "Meal assist: undefinedg, undefinedU, bolus snooze: eventual BG range 78-188; setting current basal of 0.78 as temp", 
+  "eventualBG": 78, 
+  "timestamp": "2016-05-06T15:21:10.009001", 
+  "duration": 30, 
+  "mealAssist": "On: 42%, 42%, Carbs: undefined Boluses: undefined Target: 97 Deviation: 23 BGI: -2.79", 
+  "tick": "+5"
+}

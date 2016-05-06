@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<session>
+	 <window x="0" y="36" width="1824" height="919" active-tab="1" role="epiphany-window-1ec86981">
+	 	 <embed url="https://gitter.im/nightscout/intend-to-bolus" title="&#x2780; nightscout/intend-to-bolus - Gitter"/>
+	 	 <embed url="https://openaps.readthedocs.org/en/dev/docs/walkthrough/phase-0/rpi.html" title="Phase 0: General Setup &#x2014; OpenAPS 0.0.0 documentation" loading="true"/>
+	 </window>
+</session>

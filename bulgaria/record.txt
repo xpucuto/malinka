@@ -1,0 +1,19 @@
+cgm://JSON/oref0_glucose/raw-cgm/raw-entries.json
+reporting raw-cgm/raw-entries.json
+tz://JSON/rezone/monitor/glucose.json
+reporting monitor/glucose.json
+veo://JSON/read_clock/monitor/clock.json
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 162, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/usr/local/lib/python2.7/dist-packages/decocare/stick.py", line 911, in <module>
+    stick = Stick(link.Link(port))
+  File "/usr/local/lib/python2.7/dist-packages/decocare/link.py", line 23, in __init__
+    raise AlreadyInUseException("{port} already in use".format(port=port))
+decocare.link.AlreadyInUseException: /dev/serial/by-id/usb-0a21_8001-if00-port0 already in use
+Power-cycling USB to fix dead stick
+PREFLIGHT SLEEP
+PREFLIGHT FAIL
+No CGM data..

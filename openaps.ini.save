@@ -1,0 +1,276 @@
+vendor = openaps.vendors.medtronic
+extra = veo.ini
+
+[device "cgm"]
+vendor = openaps.vendors.dexcom
+extra = cgm.ini
+
+[report "last_four_pump_hours.json"]
+device = veo
+hours = 4.0
+use = iter_pump_hours
+reporter = JSON
+
+[report "last_four_cgm_hours.json"]
+device = cgm
+count = 200
+use = iter_glucose
+reporter = JSON
+
+[alias]
+last_four_hours = report invoke last_four_pump_hours.json last_four_cgm_hours.json
+status-upload = ! bash -c "openaps report invoke monitor/upload-status.json && ns-upload $NIGHTSCOUT_HOST $API_SECRET devicestatus.json monitor/upload-status.json"
+monitor-pump = report invoke monitor/clock.json monitor/clock-zoned.json  monitor/temp_basal.json monitor/pumphistory.json monitor/pumphistory-zoned.json  monitor/iob.json monitor/battery.json monitor/reservoir.json monitor/status.json
+monitor-cgm = report invoke raw-cgm/raw-entries.json monitor/glucose.json
+latest-ns-treatment-time = ! bash -c "nightscout latest-openaps-treatment $NIGHTSCOUT_HOST | json created_at"
+format-latest-nightscout-treatments = ! bash -c "nightscout cull-latest-openaps-treatments monitor/pumphistory-zoned.json settings/model.json $(openaps latest-ns-treatment-time) > nightscout/recent-treatments.json"
+upload-recent-treatments = ! bash -c "openaps format-latest-nightscout-treatments && test $(json -f nightscout/recent-treatments.json -a created_at eventType | wc -l ) -gt 0 && (ns-upload $NIGHTSCOUT_HOST $API_SECRET treatments.json nightscout/recent-treatments.json ) || echo \"No recent treatments to upload\""
+gather-profile = report invoke settings/settings.json settings/bg_targets_raw.json settings/bg_targets.json settings/insulin_sensitivities_raw.json settings/insulin_sensitivities.json settings/basal_profile.json settings/profile.json
+enact = ! bash -c "rm enact/suggested.json; openaps report invoke enact/suggested.json && cat enact/suggested.json && grep -q duration enact/suggested.json && ( openaps report invoke enact/enacted.json && cat enact/enacted.json ) || echo No action required"
+gather = ! bash -c " openaps monitor-cgm && openaps monitor-pump && openaps get-settings"
+upload = ! bash -c "openaps preflight && ( openaps monitor-pump && openaps upload-recent-treatments && openaps get-settings) 2>/dev/null >/dev/null && echo -n \"Uploaded; most recent treatment event @ \" && openaps latest-ns-treatment-time || echo \"Error; could not upload\""
+loop = ! bash -c "openaps monitor-cgm 2>/dev/null && ( openaps preflight && openaps gather && openaps format-latest-nightscout-treatments && openaps upload-recent-treatments && openaps status-upload &&  openaps enact && openaps upload-cgm ) || echo No CGM data.".
+retry-loop = ! bash -c "openaps preflight && until( ! mm-stick warmup || openaps loop); do sleep 5; done"
+preflight = ! bash -c "rm -f monitor/clock.json && openaps report invoke monitor/clock.json 2>/dev/null && grep -q T monitor/clock.json && echo PREFLIGHT OK || (mm-stick warmup || (sudo oref0-reset-usb && echo PREFLIGHT SLEEP && sleep 120); echo PREFLIGHT FAIL; exit 1)"
+get-settings = report invoke settings/model.json settings/bg_targets.json settings/insulin_sensitivities.json settings/basal_profile.json settings/settings.json
+prep-status-reports = report invoke monitor/battery.json monitor/reservoir.json monitor/status.json
+upload-cgm = ! bash -c "openaps report invoke monitor/glucose.json && ns-upload $NIGHTSCOUT_HOST $API_SECRET entries.json monitor/glucose.json || echo No cgm data to upload "
+preflight1 = ! bash -c "rm -f settings/model.json && openaps report invoke settings/model.json && test -n $(json -f settings/model.json) && echo \"PREFLIGHT OK\" || ( mm-stick warmup fail \"NO PUMP MODEL RESPONDED\" || mm-stick fail \"NO MEDTRONIC CARELINK STICK AVAILABLE\")"
+
+[device "ns-status"]
+vendor = openaps.vendors.process
+extra = ns-status.ini
+
+[vendor "openapscontrib.timezones"]
+path = .
+module = openapscontrib.timezones
+
+[device "tz"]
+vendor = openapscontrib.timezones
+extra = tz.ini
+
+[report "monitor/clock-zoned.json"]
+use = clock
+reporter = JSON
+astimezone = False
+date = None
+adjust = missing
+input = monitor/clock.json
+device = tz
+timezone = EEST
+
+[report "read_clock.json"]
+device = veo
+use = read_clock
+reporter = JSON
+
+[device "oref0"]
+vendor = openaps.vendors.process
+extra = oref0.ini
+
+[device "get-profile"]
+vendor = openaps.vendors.process
+extra = get-profile.ini
+
+[device "calculate-iob"]
+vendor = openaps.vendors.process
+extra = calculate-iob.ini
+
+[device "determine-basal"]
+vendor = openaps.vendors.process
+extra = determine-basal.ini
+
+[report "monitor/pumphistory.json"]
+device = veo
+hours = 4.0
+use = iter_pump_hours
+reporter = JSON
+
+[report "monitor/clock.json"]
+device = veo
+use = read_clock
+reporter = JSON
+
+[report "monitor/temp_basal.json"]
+device = veo
+use = read_temp_basal
+reporter = JSON
+
+[report "monitor/upload-status.json"]
+suggested = enact/suggested.json
+status = monitor/status.json
+use = shell
+reservoir = monitor/reservoir.json
+reporter = JSON
+battery = monitor/battery.json
+clock = monitor/clock-zoned.json
+json_default = True
+device = ns-status
+remainder = []
+iob = monitor/iob.json
+enacted = enact/enacted.json
+
+[device "units"]
+vendor = openaps.vendors.units
+extra = units.ini
+
+[report "settings/settings.json"]
+device = veo
+use = read_settings
+reporter = JSON
+
+[report "settings/bg_targets_raw.json"]
+device = veo
+use = read_bg_targets
+reporter = JSON
+
+[report "settings/insulin_sensitivities_raw.json"]
+device = veo
+use = read_insulin_sensitivies
+reporter = JSON
+
+[report "settings/basal_profile.json"]
+device = veo
+use = read_basal_profile_std
+reporter = JSON
+
+[report "settings/bg_targets.json"]
+device = units
+to = mg/dL
+use = bg_targets
+input = settings/bg_targets_raw.json
+reporter = JSON
+
+[report "settings/insulin_sensitivities.json"]
+device = units
+to = mg/dL
+use = insulin_sensitivities
+input = settings/insulin_sensitivities_raw.json
+reporter = JSON
+
+[report "settings/profile.json"]
+use = shell
+bg_targets = settings/bg_targets.json
+settings = settings/settings.json
+basal_profile = settings/basal_profile.json
+reporter = text
+json_default = True
+max_iob = max_iob.json
+device = get-profile
+remainder = []
+insulin_sensitivities = settings/insulin_sensitivities.json
+
+[report "enact/suggested.json"]
+profile = settings/profile.json
+use = shell
+temp_basal = monitor/temp_basal.json
+reporter = text
+json_default = True
+device = determine-basal
+remainder = []
+iob = monitor/iob.json
+glucose = monitor/glucose.json
+
+[report "monitor/iob.json"]
+profile = settings/profile.json
+use = shell
+reporter = text
+clock = monitor/clock.json
+json_default = True
+pumphistory = monitor/pumphistory.json
+device = calculate-iob
+remainder = []
+
+[report "enact/enacted.json"]
+device = veo
+input = enact/suggested.json
+use = set_temp_basal
+reporter = JSON
+
+[report "monitor/battery.json"]
+device = veo
+use = read_battery_status
+reporter = JSON
+
+[report "monitor/reservoir.json"]
+device = veo
+use = reservoir
+reporter = JSON
+
+[report "monitor/status.json"]
+device = veo
+use = read_status
+reporter = JSON
+
+[report "settings/model.json"]
+device = veo
+use = model
+reporter = JSON
+
+[report "nightscout/recent-treatments.json"]
+oper = format-recent-history-treatments
+use = shell
+remote = monitor/pumphistory.json
+reporter = JSON
+json_default = True
+device = ns
+input = settings/model.json
+remainder = 
+
+[report "nightscout/uploaded.json"]
+oper = upload
+use = shell
+reporter = JSON
+json_default = True
+um = nightscout/recent-treatments.json
+device = ns
+remainder = 
+remote = entries.json
+input = monitor/glucose.json
+
+[report "monitor/pumphistory-zoned.json"]
+use = rezone
+reporter = JSON
+astimezone = False
+date = timestamp dateString start_at end_at created_at
+adjust = missing
+input = monitor/pumphistory.json
+device = tz
+timezone = EEST
+
+[device "curl"]
+fields = 
+cmd = bash
+vendor = openaps.vendors.process
+args = -c "curl -s https://xpucudev.azurewebsites.com/api/v1/entries.json | json -e 'this.glucose = this.sgv'"
+
+[report "monitor/glucose-ns.json"]
+device = curl
+use = shell
+reporter = text
+
+[report "raw-cgm/raw-entries.json"]
+device = cgm
+threshold = 100
+use = oref0_glucose
+hours = 1.0
+reporter = JSON
+
+[report "monitor/glucose.json"]
+use = rezone
+reporter = JSON
+astimezone = False
+date = timestamp dateString start_at end_at created_at display_time dateString
+adjust = missing
+input = raw-cgm/raw-entries.json
+device = tz
+timezone = EEST
+
+[device "ns"]
+vendor = openaps.vendors.process
+extra = ns.ini
+
+[vendor "mmeowlink.vendors.mmeowlink"]
+path = .
+module = mmeowlink.vendors.mmeowlink
+
