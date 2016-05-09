@@ -85,38 +85,62 @@ xprop:  no such property "_NET_DESKTOP_NAMES"
 ** Message: app.vala:76: Launching lxpanel 
 ** Message: app.vala:76: Launching pcmanfm 
 
-** (lxsession:656): WARNING **: app.vala:86: Failed to execute child process "xscreensaver" (No such file or directory)
+** (lxsession:652): WARNING **: app.vala:86: Failed to execute child process "xscreensaver" (No such file or directory)
 
-** (lxsession:656): WARNING **: app.vala:87: Error when launching xscreensaver
+** (lxsession:652): WARNING **: app.vala:87: Error when launching xscreensaver
 ** Message: options.vala:107: Create build-in Clipboard
 ** Message: main.vala:429: Check keymap_mode (null)
 ** Message: app.vala:76: Launching /usr/bin/ssh-agent 
-SSH_AUTH_SOCK=/tmp/ssh-JMwrYEHY04br/agent.754; export SSH_AUTH_SOCK;
-SSH_AGENT_PID=756; export SSH_AGENT_PID;
-echo Agent pid 756;
+SSH_AUTH_SOCK=/tmp/ssh-Hj0M6ot85wwF/agent.827; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=830; export SSH_AGENT_PID;
+echo Agent pid 830;
 Obt-Message: Xinerama extension is not present on the server
 ** Message: app.vala:130: /usr/bin/ssh-agent exit with this type of exit: 0
 Openbox-Message: Unable to find a valid menu file "/usr/share/lxde/openbox/menu.xml"
 ** Message: x-terminal-emulator has very limited support, consider choose another terminal
 ** Message: x-terminal-emulator has very limited support, consider choose another terminal
 
-(lxpanel:750): Gtk-CRITICAL **: IA__gtk_misc_set_alignment: assertion 'GTK_IS_MISC (misc)' failed
+(lxpanel:820): Gtk-CRITICAL **: IA__gtk_misc_set_alignment: assertion 'GTK_IS_MISC (misc)' failed
 
-(lxpanel:750): Gtk-CRITICAL **: IA__gtk_misc_set_alignment: assertion 'GTK_IS_MISC (misc)' failed
+(lxpanel:820): Gtk-CRITICAL **: IA__gtk_misc_set_alignment: assertion 'GTK_IS_MISC (misc)' failed
 ** Message: Connecting ...
 ** Message: Status changed to down
 ** Message: Status changed to opened
 ** Message: Connected to dhcpcd-6.7.1
 ** Message: Status changed to connected
 ** Message: wlan0: Associated with Guacamole
-** Message: wlan0: Configured 192.168.88.245/24
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: eth0: Link is down
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
-** Message: wlan0: Configured 192.168.88.245/24
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
@@ -125,7 +149,7 @@ Openbox-Message: Unable to find a valid menu file "/usr/share/lxde/openbox/menu.
 ** Message: eth0: Departed
 ** Message: eth0: PREINIT
 ** Message: eth0: Link is down
-** Message: wlan0: Configured 192.168.88.245/24
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
@@ -134,19 +158,211 @@ Openbox-Message: Unable to find a valid menu file "/usr/share/lxde/openbox/menu.
 ** Message: eth0: Departed
 ** Message: eth0: PREINIT
 ** Message: eth0: Link is down
-** Message: wlan0: Configured 192.168.88.245/24
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
-** Message: wlan0: Configured 192.168.88.245/24
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
-** Message: wlan0: Configured 192.168.88.245/24
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Disassociated from Guacamole
+** Message: Status changed to disconnected
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Associated with Guacamole
+** Message: Status changed to connecting
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: Status changed to connected
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: eth0: Departed
+** Message: eth0: PREINIT
+** Message: eth0: Link is down
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Disassociated from Guacamole
+** Message: Status changed to disconnected
+** Message: wlan0: Received scan results
+** Message: wlan0: Associated with Guacamole
+** Message: Status changed to connecting
+** Message: wlan0: Expired
+** Message: wlan0: Configured 169.254.217.178/16
+** Message: Status changed to connected
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Received scan results
+** Message: wlan0: Configured 192.168.88.238/24
 ** Message: wlan0: Received scan results
 ** Message: wlan0: Received scan results
